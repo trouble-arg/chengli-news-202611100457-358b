@@ -1,0 +1,59 @@
+name: Publish daily news
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh news
+        run: PYTHONUTF8=1 python aggregator.py --refresh-only
+
+      - name: Verify public cache
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cache = json.loads(Path("data/news_cache.json").read_text(encoding="utf-8"))
+          if cache.get("status") != "ok" or len(cache.get("items", [])) < 10:
+              raise SystemExit(f"Refusing to deploy incomplete cache: status={cache.get('status')} items={len(cache.get('items', []))}")
+          print(f"Cache ready: {len(cache['items'])} items")
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
