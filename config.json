@@ -1,0 +1,78 @@
+{
+  "site_name": "成理电讯",
+  "refresh_minutes": 30,
+  "daily_refresh_hour": 8,
+  "max_items": 80,
+  "topics": [
+    {
+      "category": "专业学习",
+      "query": "电气工程 自动化 电力系统 新能源 电力电子 人工智能",
+      "pages": [{"url": "https://www.ceic.com/", "source": "中国能源集团", "kind": "energy"}],
+      "searches": ["电力系统 自动化 技术 新闻 2026", "电力电子 新能源 技术 进展 2026"],
+      "search_max_age_days": 180,
+      "keywords": {"电气工程": 8, "电力系统": 8, "电力": 6, "电力电子": 8, "电网": 7, "能源": 7, "储能": 7, "光伏": 6, "发电": 6, "自动化": 7, "控制": 5, "新能源": 7, "人工智能": 5, "嵌入式": 5, "工程": 4}
+    },
+    {
+      "category": "校园机会",
+      "query": "成都理工大学 教务 招聘 讲座 交换 项目",
+      "feeds": [{"url": "https://www.chinanews.com.cn/rss/edu.xml", "source": "中新网教育"}],
+      "searches": ["成都理工大学 招聘 讲座 2026", "成都理工大学 竞赛 科研 项目 2026"],
+      "search_max_age_days": 330,
+      "keywords": {"成都理工大学": 12, "成都理工": 10, "教务": 8, "讲座": 5, "交换": 5, "项目": 4}
+    },
+    {
+      "category": "竞赛科研",
+      "query": "大学生电子设计竞赛 智能车竞赛 机器人 数学建模 科研项目",
+      "pages": [
+        {"url": "https://nuedc.sjtu.edu.cn/CN/news.aspx?info_lb=8&flag=7", "source": "全国大学生电子设计竞赛", "kind": "nuedc"},
+        {"url": "https://www.mcm.edu.cn/", "source": "全国大学生数学建模竞赛", "kind": "mcm"},
+        {"url": "https://jsjds.blcu.edu.cn/", "source": "中国大学生计算机设计大赛", "kind": "competition_home"},
+        {"url": "https://cy.ncss.cn/", "source": "中国国际大学生创新大赛", "kind": "competition_home"},
+        {"url": "https://www.tiaozhanbei.net/", "source": "挑战杯", "kind": "competition_home"}
+      ],
+      "searches": ["全国大学生电子设计竞赛 2026 报名", "全国大学生智能车竞赛 2026"],
+      "search_max_age_days": 330,
+      "keywords": {"电子设计竞赛": 10, "智能车": 8, "机器人": 6, "数学建模": 6, "计算机设计": 8, "创新大赛": 8, "挑战杯": 8, "揭榜挂帅": 7, "嵌入式": 7, "人工智能": 6, "竞赛": 6, "大赛": 5, "报名": 6, "通知": 4, "科研": 5}
+    },
+    {
+      "category": "升学就业",
+      "query": "电气考研 保研 国家电网 校园招聘 电气就业",
+      "pages": [{"url": "https://www.yingjiesheng.com/", "source": "应届生求职网", "kind": "jobs"}],
+      "searches": ["电气工程师 2027届 校园招聘", "电气工程及其自动化 2027届 招聘", "国家电网 2027校园招聘", "电气设备 2027届 校园招聘"],
+      "search_max_age_days": 330,
+      "keywords": {"电气工程师": 10, "电气": 8, "自动化": 7, "新能源": 7, "国家电网": 10, "校园招聘": 8, "校招": 8, "2027届": 8, "27届": 8, "工程师": 8, "软件": 6, "开发": 5, "技术": 5, "考研": 7, "保研": 7, "就业": 7, "招聘": 6}
+    },
+    {
+      "category": "政策行业",
+      "query": "教育部 国家能源局 新型电力系统 智能电网 能源政策",
+      "feeds": [{"url": "https://www.chinanews.com.cn/rss/china.xml", "source": "中新网"}],
+      "searches": ["国家能源局 新型电力系统 2026", "教育部 高校毕业生 就业 2027"],
+      "search_max_age_days": 240,
+      "keywords": {"教育部": 8, "国家能源局": 10, "新型电力系统": 9, "智能电网": 8, "能源": 7, "电力": 6, "教育": 6, "高校": 5, "就业": 7, "毕业生": 6, "政策": 6}
+    },
+    {
+      "category": "四川热点",
+      "query": "四川 成都 重点新闻 热点",
+      "pages": [
+        {"url": "https://www.sc.gov.cn/", "source": "四川省人民政府", "kind": "sichuan"},
+        {"url": "https://www.scol.com.cn/", "source": "四川在线", "kind": "sichuan"},
+        {"url": "https://www.newssc.org/", "source": "四川新闻网", "kind": "sichuan"},
+        {"url": "https://www.thecover.cn/", "source": "封面新闻", "kind": "sichuan"}
+      ],
+      "keywords": {"科技创新": 14, "人工智能": 11, "低空": 10, "创新": 10, "政策": 9, "产业": 9, "机器人": 9, "机场": 8, "能源": 8, "电力": 8, "经济": 8, "企业": 8, "交通": 7, "民生": 7, "医疗": 7, "教育": 7, "大学": 7, "就业": 7, "大会": 7, "四川": 4, "成都": 4, "蓉": 3, "川": 3},
+      "exclude_keywords": ["男篮", "影视", "初雪", "秋日", "黄金机位", "哪吒", "电影", "跑上楼", "猪尾巴", "套娃式"]
+    },
+    {
+      "category": "科技前沿",
+      "query": "人工智能 芯片 机器人 科技新闻",
+      "feeds": [
+        {"url": "https://www.ithome.com/rss", "source": "IT之家"},
+        {"url": "https://www.solidot.org/index.rss", "source": "Solidot"},
+        {"url": "https://www.geekpark.net/rss", "source": "极客公园"},
+        {"url": "https://www.ifanr.com/feed", "source": "爱范儿"},
+        {"url": "https://www.qbitai.com/feed", "source": "量子位"}
+      ],
+      "keywords": {"人工智能": 8, "AI": 8, "芯片": 8, "机器人": 7, "大模型": 7, "自动驾驶": 7, "量子": 6, "开源": 5, "云计算": 5, "半导体": 7}
+    }
+  ]
+}
