@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="成都理工大学电气工程及其自动化专业的个人重要资讯情报台。">
+  <title>成理电讯｜个人重要信息情报台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="返回顶部"><span class="brand-mark" aria-hidden="true">成</span><span><strong>成理电讯</strong><small>PERSONAL INTELLIGENCE DESK</small></span></a>
+    <nav class="main-nav" aria-label="主导航"><a class="nav-link is-active" href="#briefing">今日重点</a><a class="nav-link" href="#feed">全部资讯</a><a class="nav-link" href="#sources">信息源</a></nav>
+    <div class="top-actions"><span class="live-state" id="live-state"><i></i>正在同步</span><button class="icon-button" id="settings-button" type="button" aria-label="打开偏好设置" title="偏好设置">⚙</button></div>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div><p class="eyebrow">CHENGDU UNIVERSITY OF TECHNOLOGY · EE/AUTO</p><h1 id="hero-title">成理电讯</h1><p class="hero-copy">把电气自动化、科技前沿、校园竞赛、专业就业与四川热点，整理成每天几分钟能读完的个人简报。</p></div>
+        <div class="hero-stats" aria-label="今日资讯状态"><div><strong id="hero-total">—</strong><span>今日资讯</span></div><div><strong id="hero-important">—</strong><span>高优先级</span></div><div><strong id="hero-sources">—</strong><span>活跃来源</span></div></div>
+      </div>
+    </section>
+    <section class="control-band" aria-label="资讯筛选">
+      <div class="control-inner">
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="资讯分类"></div>
+        <div class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="搜索学校、竞赛、企业或关键词" autocomplete="off"></div>
+        <button class="refresh-button" id="refresh-button" type="button"><span aria-hidden="true">↻</span><span>刷新</span></button>
+      </div>
+    </section>
+    <section class="content-shell" id="briefing">
+      <div class="primary-column">
+        <header class="section-heading"><div><p class="eyebrow dark">DAILY BRIEFING</p><h2>今日简报</h2></div><p id="last-updated">等待数据同步</p></header>
+        <div class="briefing-list" id="briefing-list" aria-live="polite"></div>
+        <section class="feed-section" id="feed">
+          <header class="section-heading feed-heading"><div><p class="eyebrow dark">LATEST SIGNALS</p><h2>全部资讯</h2></div><div class="sort-control"><label for="sort-select">排序</label><select id="sort-select"><option value="relevance">综合重要度</option><option value="newest">最新发布</option><option value="source">来源可信度</option></select></div></header>
+          <div class="news-list" id="news-list" aria-live="polite"></div>
+          <button class="load-more" id="load-more" type="button">显示更多资讯</button>
+        </section>
+      </div>
+      <aside class="sidebar">
+        <section class="sidebar-block"><p class="eyebrow dark">FOCUS</p><h3>我的关注</h3><div class="focus-list"><div><span>01</span><p><strong>专业学习</strong>电力系统、自动控制、嵌入式与人工智能</p></div><div><span>02</span><p><strong>校园机会</strong>竞赛、项目、讲座、交换与科研</p></div><div><span>03</span><p><strong>专业就业</strong>电气校招、国网、新能源与技术岗位</p></div><div><span>04</span><p><strong>四川热点</strong>成都与四川重点新闻、政策和产业动态</p></div></div></section>
+        <section class="sidebar-block source-block" id="sources"><p class="eyebrow dark">TRUSTED CHANNELS</p><h3>官方入口</h3><div class="source-links"><a href="https://www.cdut.edu.cn/" target="_blank" rel="noreferrer"><span>成都理工大学</span><b>↗</b></a><a href="https://yz.chsi.com.cn/" target="_blank" rel="noreferrer"><span>中国研究生招生信息网</span><b>↗</b></a><a href="https://zhaopin.sgcc.com.cn/" target="_blank" rel="noreferrer"><span>国家电网招聘平台</span><b>↗</b></a><a href="https://www.neea.edu.cn/" target="_blank" rel="noreferrer"><span>教育考试院</span><b>↗</b></a><a href="https://www.moe.gov.cn/" target="_blank" rel="noreferrer"><span>教育部</span><b>↗</b></a><a href="https://www.nea.gov.cn/" target="_blank" rel="noreferrer"><span>国家能源局</span><b>↗</b></a></div></section>
+        <section class="sidebar-block signal-note"><p class="eyebrow dark">READING NOTE</p><h3>为什么排在前面？</h3><p>排序综合考虑发布时间、与你的专业关联度、关键词权重、来源可信度和信息稀缺度。点击星标可加入个人收藏。</p></section>
+      </aside>
+    </section>
+  </main>
+  <footer><div><strong>成理电讯</strong><span>为成都理工大学电气工程及其自动化学习者整理</span></div><p>资讯仅作学习与信息导航参考，重要决定请以原始发布单位为准。</p></footer>
+  <dialog id="settings-dialog"><form method="dialog"><header><div><p class="eyebrow dark">PREFERENCES</p><h2>信息偏好</h2></div><button class="icon-button" value="cancel" aria-label="关闭设置" title="关闭">×</button></header><label class="toggle-row"><span><strong>只看高优先级</strong><small>优先显示可能影响学习与发展的信息</small></span><input id="important-only" type="checkbox"></label><label class="toggle-row"><span><strong>隐藏已读</strong><small>点击资讯标题后自动标记为已读</small></span><input id="hide-read" type="checkbox"></label><label class="field-row"><span><strong>自动刷新</strong><small>后台服务也会定时抓取</small></span><select id="refresh-interval"><option value="60000">每 1 分钟</option><option value="300000">每 5 分钟</option><option value="900000">每 15 分钟</option></select></label><button class="primary-action" value="default">完成</button></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
