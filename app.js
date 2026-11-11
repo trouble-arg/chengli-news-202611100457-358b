@@ -1,6 +1,7 @@
 const categories = [
   { id: "all", label: "全部" }, { id: "专业学习", label: "专业学习" },
   { id: "校园机会", label: "校园机会" }, { id: "竞赛科研", label: "竞赛科研" },
+  { id: "成都实习工作", label: "成都实习工作" },
   { id: "升学就业", label: "专业就业" }, { id: "政策行业", label: "政策行业" },
   { id: "科技前沿", label: "科技前沿" }, { id: "四川热点", label: "四川热点" }
 ];
