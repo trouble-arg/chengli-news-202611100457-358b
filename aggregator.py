@@ -78,6 +78,18 @@ def request_json(url, timeout=12):
     return json.loads(request_text(url, timeout))
 
 
+def fetch_with_retry(function, *args, attempts=3, delay=1.0):
+    last_error = None
+    for attempt in range(attempts):
+        try:
+            return function(*args)
+        except Exception as error:
+            last_error = error
+            if attempt + 1 < attempts:
+                time.sleep(delay)
+    raise last_error
+
+
 def source_from_link(link):
     host = urllib.parse.urlparse(link).netloc.lower().replace("www.", "")
     return host or "网络来源"
@@ -169,6 +181,30 @@ def fetch_page(url, topic, source_override=None, kind=None):
             title = clean_text(title_match.group(1))
             image_match = re.search(r'<img src="([^"]+)"', page[anchor_start:title_match.start()])
             add(title, href.group(1), f"{title}。点击查看岗位详情、招聘对象与报名要求。", now, "实时更新", image_match.group(1) if image_match else "")
+
+    elif kind == "rc114_jobs":
+        for block in re.finditer(r'<div class="joblist">(.*?)</div>', page, re.S):
+            content = block.group(1)
+            job = re.search(r'<li class="jobname">.*?<a href="([^"]+)"[^>]*>(.*?)</a>', content, re.S)
+            unit = re.search(r'<li class="unitname">.*?<a[^>]*>(.*?)</a>', content, re.S)
+            if not job:
+                continue
+            title = clean_text(job.group(2))
+            company = clean_text(unit.group(1)) if unit else source
+            city_match = re.search(r'<li class="workcity">\s*(.*?)\s*</li>', content, re.S)
+            edu_match = re.search(r'<li class="edu">\s*(.*?)\s*</li>', content, re.S)
+            salary_match = re.search(r'<li class="salary">\s*(.*?)\s*</li>', content, re.S)
+            date_match = re.search(r'(20\d{2})/(\d{1,2})/(\d{1,2})', content)
+            if not title or not date_match:
+                continue
+            city = clean_text(city_match.group(1)) if city_match else "成都"
+            edu = clean_text(edu_match.group(1)) if edu_match else "学历要求见原文"
+            salary = clean_text(salary_match.group(1)) if salary_match else "待遇见原文"
+            published = datetime(*map(int, date_match.groups()), tzinfo=timezone.utc)
+            summary = f"{company}｜{city}｜{edu}｜{salary}"
+            add(title, job.group(1), summary, published)
+            if len(records) >= 15:
+                break
 
     elif kind == "competition_home":
         pattern = re.compile(r'<a\b(?P<attrs>[^>]*)>(?P<body>.*?)(?:</a>)(?P<tail>.*?)(?=<a\b|</li|</ul)', re.S | re.I)
@@ -333,9 +369,9 @@ def fetch_all():
     jobs = []
     for topic in config["topics"]:
         for feed in topic.get("feeds", []):
-            jobs.append((topic, feed.get("source") or topic["category"], fetch_rss, feed["url"], topic, feed.get("source")))
+            jobs.append((topic, feed.get("source") or topic["category"], fetch_with_retry, fetch_rss, feed["url"], topic, feed.get("source")))
         for page in topic.get("pages", []):
-            jobs.append((topic, page.get("source") or topic["category"], fetch_page, page["url"], topic, page.get("source"), page.get("kind")))
+            jobs.append((topic, page.get("source") or topic["category"], fetch_with_retry, fetch_page, page["url"], topic, page.get("source"), page.get("kind")))
     with ThreadPoolExecutor(max_workers=9) as executor:
         futures = {executor.submit(job[2], *job[3:]): job for job in jobs}
         for future in as_completed(futures):
@@ -380,7 +416,7 @@ def fetch_all():
         deduplicated[record_id] = record
 
     ranked = sorted(deduplicated.values(), key=lambda item: item["score"], reverse=True)
-    limits = {"科技前沿": 10, "升学就业": 8, "专业学习": 5, "校园机会": 4, "竞赛科研": 12, "政策行业": 4, "四川热点": 12}
+    limits = {"科技前沿": 10, "成都实习工作": 15, "升学就业": 8, "专业学习": 5, "校园机会": 4, "竞赛科研": 12, "政策行业": 4, "四川热点": 12}
     selected = []
     for category, limit in limits.items():
         pool = [record for record in ranked if record["category"] == category]
