@@ -35,6 +35,22 @@
       "keywords": {"电子设计竞赛": 10, "智能车": 8, "机器人": 6, "数学建模": 6, "计算机设计": 8, "创新大赛": 8, "挑战杯": 8, "揭榜挂帅": 7, "嵌入式": 7, "人工智能": 6, "竞赛": 6, "大赛": 5, "报名": 6, "通知": 4, "科研": 5}
     },
     {
+      "category": "成都实习工作",
+      "query": "成都 实习 电气 自动化 招聘",
+      "pages": [
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E5%AE%9E%E4%B9%A0", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E7%94%B5%E6%B0%94", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E8%87%AA%E5%8A%A8%E5%8C%96", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E7%94%B5%E5%AD%90", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E5%B5%8C%E5%85%A5%E5%BC%8F", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E6%96%B0%E8%83%BD%E6%BA%90", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E7%94%B5%E5%8A%9B", "source": "成都人才网", "kind": "rc114_jobs"},
+        {"url": "https://job.rc114.com/JobSearchCate.aspx?KeyWord=%E7%A0%94%E5%8F%91", "source": "成都人才网", "kind": "rc114_jobs"}
+      ],
+      "exclude_keywords": ["商铺销售", "商业顾问", "金融", "猎头", "销售", "客服", "会计", "财务", "房地产", "银行", "后勤", "电子商务", "物业", "行政前台"],
+      "keywords": {"成都": 8, "实习": 10, "校招": 9, "电气": 10, "自动化": 9, "电子": 8, "工程师": 8, "技术": 6, "研发": 6, "嵌入式": 7, "电力": 7, "新能源": 7, "软件": 5, "助理": 5}
+    },
+    {
       "category": "升学就业",
       "query": "电气考研 保研 国家电网 校园招聘 电气就业",
       "pages": [{"url": "https://www.yingjiesheng.com/", "source": "应届生求职网", "kind": "jobs"}],
